@@ -32,7 +32,7 @@ export default function Register() {
   // TODO: Figure out form validation
   return (
     <div className="flex flex-col items-center justify-center md:px-10 xs:px-5 py-5">
-      <div className="card flex flex-col items-center justify-center w-96 max-w-full">
+      <div className="card flex flex-col items-center justify-center xs:w-full sm:2/3 lg:w-1/2 xl:w-1/3 max-w-full">
         <h1 className="self-start text-2xl font-bold mb-8">Register</h1>
         <form className="flex flex-col" onSubmit={onRegister}>
           <InputBox
