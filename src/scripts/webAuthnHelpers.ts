@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { startAuthentication, startRegistration } from '@simplewebauthn/browser';
 
-import UserCreateModel from './models/UserCreateModel';
+import UserCreateModel from './models/users/UserCreateModel';
 
 // TODO: Figure out client side auth
 
