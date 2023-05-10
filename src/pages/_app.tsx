@@ -1,9 +1,9 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import Image from "next/image";
-import { Roboto } from 'next/font/google'
+import Image from "next/image"
+import { Inter } from 'next/font/google';
 
-const font = Roboto({ weight: '400', subsets: ['latin'] })
+const font = Inter({subsets: ['latin']});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

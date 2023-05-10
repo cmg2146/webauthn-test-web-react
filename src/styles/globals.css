@@ -4,8 +4,8 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 184, 189, 190;
-  --background-end-rgb: 225, 225, 225;
+  --background-start-rgb: 240, 242, 244;
+  --background-end-rgb: 244, 246, 248;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,14 +29,14 @@ body {
 
 @layer components {
   .card {
-    @apply bg-white p-8 rounded drop-shadow-md;
+    @apply bg-white p-8 rounded-xl drop-shadow-md border border-gray-300;
   }
 
   .btn-primary {
-    @apply tracking-widest font-medium uppercase bg-blue-500 hover:bg-blue-600 text-white rounded-md drop-shadow-sm py-2 px-4;
+    @apply tracking-wide font-normal uppercase bg-blue-500 hover:bg-blue-600 text-white rounded-md drop-shadow-sm py-2 px-4;
   }
 
   .input-primary {
-    @apply outline-none border border-gray-300 hover:border-blue-400 focus:ring-2 focus:ring-blue-600 rounded-md drop-shadow-sm py-2 px-4;
+    @apply outline-none border border-gray-300 hover:border-blue-400 focus:ring-1 focus:ring-blue-600 rounded-md drop-shadow-sm py-2 px-4;
   }
 }
