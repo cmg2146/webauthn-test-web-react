@@ -69,7 +69,7 @@ export default function ConfirmDeletePasskeyDialog({
             </Dialog.Description>
 
             {errorDeletingPasskey &&
-              <p className="text-red">There was an issue deleting the passkey: {errorDeletingPasskey}</p>
+              <p className="text-red-600">There was an issue deleting the passkey: {errorDeletingPasskey}</p>
             }
           </div>
 
