@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
@@ -22,14 +23,15 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center md:px-10 xs:px-5 py-5">
+    <div className="min-h-screen flex flex-col items-center justify-start md:px-10 xs:px-5 py-5">
+      <Image src="webauthn-logo.svg" width="90" height="90" alt="Logo" className="my-10"></Image>
       <div className="card flex flex-col items-center justify-center w-96 max-w-full">
         <h1 className="self-start text-2xl font-bold mb-8">Login</h1>
         <span className="mb-6">Click below to login with your computer, phone, or security key.</span>
         <form className="mb-10 flex flex-col items-center" onSubmit={onLogin}>
-          <button 
-            type="submit" 
-            className="btn-primary" 
+        <button
+            type="submit"
+            className="btn-primary"
             disabled={isLoggingIn}
           >
             Login

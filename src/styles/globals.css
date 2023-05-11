@@ -32,11 +32,43 @@ body {
     @apply bg-white p-8 rounded-xl drop-shadow-md border border-gray-300;
   }
 
+  .btn {
+    @apply flex items-center text-sm font-semibold rounded-md drop-shadow-sm py-2 px-4;
+  }
+
   .btn-primary {
-    @apply tracking-wide font-normal uppercase bg-blue-500 hover:bg-blue-600 text-white rounded-md drop-shadow-sm py-2 px-4;
+    @apply btn bg-blue-500 hover:bg-blue-600 text-white;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-600 hover:bg-red-500 text-white;
+  }
+
+  .btn-plain {
+    @apply btn bg-white hover:bg-gray-200 border border-gray-300 text-gray-800;
   }
 
   .input-primary {
     @apply outline-none border border-gray-300 hover:border-blue-400 focus:ring-1 focus:ring-blue-600 rounded-md drop-shadow-sm py-2 px-4;
+  }
+
+  /* Dropdown menu anchored to dropdown button from top left */
+  .menu-items-tl {
+    @apply absolute left-0 origin-top-left mt-1;
+  }
+
+  /* Dropdown menu anchored to dropdown button from top right */
+  .menu-items-tr {
+    @apply absolute right-0 origin-top-right mt-1;
+  }
+
+  /* Dropdown menu anchored to dropdown button from bottom left */
+  .menu-items-bl {
+    @apply absolute left-0 bottom-full origin-bottom-left mb-1;
+  }
+
+  /* Dropdown menu anchored to dropdown button from bottom right */
+  .menu-items-br {
+    @apply absolute right-0 bottom-full origin-bottom-right mb-1;
   }
 }
