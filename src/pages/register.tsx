@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import Image from "next/image";
 
 import InputBox from "@/components/InputBox";
+import Spinner from "@/components/Spinner";
 import { doRegisterUserCeremony } from "@/scripts/webAuthnHelpers";
 
 export default function Register() {
@@ -72,6 +73,7 @@ export default function Register() {
               className="btn-primary"
               disabled={isRegistering}
             >
+              {isRegistering && <Spinner className="mr-2 h-4 w-4"></Spinner>}
               Continue
             </button>
 

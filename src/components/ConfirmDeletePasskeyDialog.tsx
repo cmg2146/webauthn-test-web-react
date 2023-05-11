@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
+import Spinner from "./Spinner";
 
 export default function ConfirmDeletePasskeyDialog({
   passkey,
@@ -86,6 +87,7 @@ export default function ConfirmDeletePasskeyDialog({
             disabled={isDeletingPasskey}
             onClick={() => confirmedDeletion()}
           >
+            {isDeletingPasskey && <Spinner className="mr-2 h-4 w-4"></Spinner>}
             Delete
           </button>
         </div>

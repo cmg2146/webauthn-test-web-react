@@ -3,9 +3,10 @@ import axios from "axios";
 import { PlusIcon } from '@heroicons/react/24/outline'
 import { MouseEvent, useState } from "react";
 
-import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
 import UserPasskeyItem from "./UserPasskeyItem";
 import ConfirmDeletePasskeyDialog from "./ConfirmDeletePasskeyDialog";
+import Spinner from "./Spinner";
+import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
 import { doRegisterCredentialCeremony } from "@/scripts/webAuthnHelpers";
 
 export default function UserPasskeys({
@@ -13,23 +14,13 @@ export default function UserPasskeys({
 }: {
   className?: string
 }) {
-  var {data, error, isLoading, mutate} = useSWR(
+  const {data, error, isLoading, mutate} = useSWR(
     "/api/users/me/credentials",
     (url) => axios.get<UserCredentialModel[]>(url).then((res) => res.data));
 
   const [isAddingPasskey, setIsAddingPasskey] = useState(false);
   const [errorAddingPasskey, setErrorAddingPasskey] = useState("");
   const [deletingPasskey, setDeletingPasskey] = useState<UserCredentialModel | undefined | null>(null);
-
-  data = [{
-    id: 1 as unknown as bigint,
-    userId: 1 as unknown as bigint,
-    displayName: "Test",
-    attestationFormatId: "tpm",
-    createdAt: new Date()
-  }];
-  isLoading = false;
-  error = undefined;
 
   function addPasskey(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -57,7 +48,10 @@ export default function UserPasskeys({
   let passkeyContent;
   if (isLoading) {
     passkeyContent = (
-      <span className="self-center font-semibold py-5 px-10">Loading your passkeys...</span>
+      <span className="flex items-center self-center font-semibold py-5 px-10">
+        <Spinner className="mr-3 h-4 w-4"></Spinner>
+        Loading your passkeys...
+      </span>
     );
   } else if (error) {
     passkeyContent = (

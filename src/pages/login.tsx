@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
+import Spinner from "@/components/Spinner";
 import { doLoginCeremony } from "@/scripts/webAuthnHelpers";
 
 export default function Login() {
@@ -34,6 +35,7 @@ export default function Login() {
             className="btn-primary"
             disabled={isLoggingIn}
           >
+            {isLoggingIn && <Spinner className="mr-2 h-4 w-4"></Spinner>}
             Login
           </button>
           {loginError && <span className="mt-4 text-red-500 text-sm">{loginError}</span>}
