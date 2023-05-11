@@ -52,23 +52,33 @@ body {
     @apply outline-none border border-gray-300 hover:border-blue-400 focus:ring-1 focus:ring-blue-600 rounded-md drop-shadow-sm py-2 px-4;
   }
 
-  /* Dropdown menu anchored to dropdown button from top left */
+  /* Dropdown menu anchored to dropdown button at top left */
   .menu-items-tl {
     @apply absolute left-0 origin-top-left mt-1;
   }
 
-  /* Dropdown menu anchored to dropdown button from top right */
+  /* Dropdown menu anchored to dropdown button at top right */
   .menu-items-tr {
     @apply absolute right-0 origin-top-right mt-1;
   }
 
-  /* Dropdown menu anchored to dropdown button from bottom left */
+  /* Dropdown menu anchored to dropdown button at top center */
+  .menu-items-t {
+    @apply absolute left-0 right-0 mx-auto origin-top mt-1;
+  }
+
+  /* Dropdown menu anchored to dropdown button at bottom left */
   .menu-items-bl {
     @apply absolute left-0 bottom-full origin-bottom-left mb-1;
   }
 
-  /* Dropdown menu anchored to dropdown button from bottom right */
+  /* Dropdown menu anchored to dropdown button at bottom right */
   .menu-items-br {
     @apply absolute right-0 bottom-full origin-bottom-right mb-1;
+  }
+
+  /* Dropdown menu anchored to dropdown button at bottom center */
+  .menu-items-b {
+    @apply absolute left-0 right-0 mx-auto bottom-full origin-bottom mb-1;
   }
 }

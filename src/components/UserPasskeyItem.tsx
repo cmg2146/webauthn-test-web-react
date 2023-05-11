@@ -8,6 +8,7 @@ import {
 import { Menu } from '@headlessui/react';
 
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
+import { useActivePasskey } from '@/scripts/authHelpers';
 
 export default function UserPasskeyItem({
   passkey,
@@ -18,6 +19,8 @@ export default function UserPasskeyItem({
   onDelete: (credential: UserCredentialModel) => void,
   className?: string
 }) {
+  const activePasskeyInfo = useActivePasskey();
+
   function getPasskeyIcon(passkey: UserCredentialModel) {
     const attFmt = passkey.attestationFormatId;
 
@@ -41,6 +44,9 @@ export default function UserPasskeyItem({
           {getPasskeyIcon(passkey)}
           <div className="flex-grow">{passkey.displayName}</div>
         </div>
+        {activePasskeyInfo.passkey?.id === passkey.id &&
+          <div className="rounded-full p-2 bg-blue-400">Logged In</div>
+        }
         <div className="text-sm font-light">Added {passkey.createdAt.toLocaleDateString()}</div>
       </div>
 
