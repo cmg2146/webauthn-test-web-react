@@ -59,16 +59,7 @@ export function doLoginCeremony(): Promise<any> {
   return axios
     .get('/api/webauthn/authenticate')
     .then(response => startAuthentication(response.data))
-    .then(assertionResponse => {
-      return $auth
-        .loginWith(
-          'cookie', {
-            url: '/api/webauthn/authenticate',
-            method: 'post',
-            data: assertionResponse
-          }
-        );
-    });
+    .then(assertionResponse => axios.post('/api/webauthn/authenticate', assertionResponse));
 }
 
 /**
@@ -86,16 +77,7 @@ export function doRegisterUserCeremony(user: UserCreateModel): Promise<any> {
   return axios
     .post('/api/webauthn/signup-start', user)
     .then(response => startRegistration(response.data))
-    .then((attestationResponse) => {
-      return $auth
-        .loginWith(
-          'cookie', {
-            url: '/api/webauthn/signup-finish',
-            method: 'post',
-            data: attestationResponse
-          }
-        );
-    });
+    .then(attestationResponse => axios.post('/api/webauthn/signup-finish', attestationResponse));
 }
 
 /**
@@ -110,9 +92,7 @@ export function doRegisterPasskeyCeremony(): Promise<any> {
   return axios
     .get('/api/webauthn/register')
     .then(response => startRegistration(response.data))
-    .then((attestationResponse) => {
-      return axios.post('/api/webauthn/register', attestationResponse);
-    })
+    .then(attestationResponse => axios.post('/api/webauthn/register', attestationResponse));
 }
 
 /**
