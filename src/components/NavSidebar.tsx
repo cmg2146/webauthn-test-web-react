@@ -24,7 +24,7 @@ export default function NavSidebar({
       </div>
       {user && (
         <Menu as="div" className="relative block">
-          <Menu.Button className="w-full hover:bg-slate-200 block font-semibold rounded px-6 py-2">
+          <Menu.Button className="w-full hover:bg-slate-200 block font-semibold rounded px-4 py-2">
             <div className="flex items-center">
               <div className="mr-3 p-2 rounded-full border border-gray-800 text-sm text-gray-800">
                 {user?.firstName.charAt(0).toLocaleUpperCase()}

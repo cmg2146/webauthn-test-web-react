@@ -1,5 +1,5 @@
 export default interface ModelBase {
   id: bigint;
-  createdAt: Date;
-  modifiedAt?: Date | null | undefined;
+  created: string;
+  updated?: string | null | undefined;
 }
