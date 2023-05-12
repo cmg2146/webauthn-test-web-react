@@ -60,7 +60,7 @@ export async function doRegisterUserCeremony(user: UserCreateModel): Promise<any
 /**
  * Attempts to create and register a new WebAuthn passkey for the current user.
  */
-export async function doRegisterCredentialCeremony(): Promise<any> {
+export async function doRegisterPasskeyCeremony(): Promise<any> {
   // The device registration ceremony steps are as follows:
   //  1) retrieve attestation options/challenge
   //  2) start the client side credential creation and get authenticator response

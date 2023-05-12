@@ -7,7 +7,7 @@ import UserPasskeyItem from "./UserPasskeyItem";
 import ConfirmDeletePasskeyDialog from "./ConfirmDeletePasskeyDialog";
 import Spinner from "./Spinner";
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
-import { doRegisterCredentialCeremony } from "@/scripts/webAuthnHelpers";
+import { doRegisterPasskeyCeremony } from "@/scripts/webAuthnHelpers";
 
 export default function UserPasskeys({
   className = ""
@@ -27,7 +27,7 @@ export default function UserPasskeys({
     setIsAddingPasskey(true);
     setErrorAddingPasskey("");
 
-    return doRegisterCredentialCeremony()
+    return doRegisterPasskeyCeremony()
       .then((response) => {
         mutate();
       })
