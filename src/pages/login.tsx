@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 import Spinner from "@/components/Spinner";
-import { doLoginCeremony } from "@/scripts/webAuthnHelpers";
+import { doLoginCeremony } from "@/scripts/authHelpers";
 
 export default function Login() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);

@@ -1,9 +1,9 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import Spinner from "@/components/Spinner";
-import { doRegisterUserCeremony } from "@/scripts/webAuthnHelpers";
+import { doRegisterUserCeremony } from "@/scripts/authHelpers";
 import UserCreateModel from "@/scripts/models/users/UserCreateModel";
 
 export default function Register() {

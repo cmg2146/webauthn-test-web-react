@@ -7,7 +7,7 @@ import UserPasskeyItem from "./UserPasskeyItem";
 import ConfirmDeletePasskeyDialog from "./ConfirmDeletePasskeyDialog";
 import Spinner from "./Spinner";
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
-import { doRegisterPasskeyCeremony } from "@/scripts/webAuthnHelpers";
+import { doRegisterPasskeyCeremony } from "@/scripts/authHelpers";
 
 export default function UserPasskeys({
   className = ""
