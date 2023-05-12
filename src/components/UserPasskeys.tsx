@@ -40,7 +40,7 @@ export default function UserPasskeys({
   }
 
   function onPasskeyDeleted(passkey: UserCredentialModel) {
-    // TODO: remove the passkey from the data
+    // TODO: remove the passkey from the data instead of doing a reload, if possible
     setDeletingPasskey(null);
     mutate();
   }

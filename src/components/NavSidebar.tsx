@@ -12,6 +12,7 @@ export default function NavSidebar({
 }) {
   const { user, isLoading, isError } = useCurrentUser();
 
+  // TODO: Implement responsive, collapsible nav and header bar
   return (
     <nav className={`flex flex-col h-screen w-[300px] overflow-y-auto bg-slate-50 border-r border-slate-200 text-gray-800  ${className}`}>
       <Image src="webauthn-logo.svg" width="45" height="45" alt="Logo" className="mt-6 ml-6 mb-8"></Image>
@@ -21,7 +22,7 @@ export default function NavSidebar({
           <span className="font-semibold">Passkeys</span>
         </Link>
       </div>
-      {!isLoading &&
+      {user && (
         <Menu as="div" className="relative block">
           <Menu.Button className="w-full hover:bg-slate-200 block font-semibold rounded px-6 py-2">
             <div className="flex items-center">
@@ -46,7 +47,7 @@ export default function NavSidebar({
               <span>Logout</span>
             </Menu.Item>
           </Menu.Items>
-        </Menu>
+        </Menu>)
       }
     </nav>
   );

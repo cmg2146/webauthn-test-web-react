@@ -49,6 +49,7 @@ export default function ConfirmDeletePasskeyDialog({
     deletePasskey();
   }
 
+  // TODO: figure out transition
   return (
     <Dialog
       open={isOpen}
