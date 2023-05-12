@@ -4,6 +4,9 @@ import useSWR from "swr";
 import UserModel from "./models/users/UserModel";
 import UserCredentialModel from "./models/passkeys/UserCredentialModel";
 
+/**
+ * Uses SWR to get the current user.
+ */
 export function useCurrentUser(): {
   user: UserModel | undefined,
   isLoading: boolean,
@@ -20,7 +23,10 @@ export function useCurrentUser(): {
   }
 }
 
-export function useActivePasskey(): {
+/**
+ * Uses SWR to get the passkey used by the current user to login to their current session.
+ */
+export function useCurrentPasskey(): {
   passkey: UserCredentialModel | undefined,
   isLoading: boolean,
   isError: any

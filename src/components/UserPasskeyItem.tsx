@@ -8,7 +8,7 @@ import {
 import { Menu } from '@headlessui/react';
 
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
-import { useActivePasskey } from '@/scripts/authHelpers';
+import { useCurrentPasskey } from '@/scripts/authHelpers';
 
 export default function UserPasskeyItem({
   passkey,
@@ -19,7 +19,7 @@ export default function UserPasskeyItem({
   onDelete: (credential: UserCredentialModel) => void,
   className?: string
 }) {
-  const activePasskeyInfo = useActivePasskey();
+  const activePasskeyInfo = useCurrentPasskey();
 
   function getPasskeyIcon(passkey: UserCredentialModel) {
     const attFmt = passkey.attestationFormatId;
