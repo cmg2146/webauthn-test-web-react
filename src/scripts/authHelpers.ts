@@ -6,7 +6,7 @@ import UserModel from "./models/users/UserModel";
 import UserCredentialModel from "./models/passkeys/UserCredentialModel";
 import UserCreateModel from './models/users/UserCreateModel';
 
-// TODO: Figure out client side auth
+// TODO: Figure out client side auth redirects
 
 /**
  * Uses SWR to get the current user.
@@ -49,7 +49,7 @@ export function useCurrentPasskey(): {
 /**
  * Attempts to login a user.
  */
-export async function doLoginCeremony(): Promise<any> {
+export function doLoginCeremony(): Promise<any> {
   // The login ceremony steps are as follows:
   //  1) retrieve authentication options/challenge
   //  2) start the client side authentication and get authenticator response
@@ -76,7 +76,7 @@ export async function doLoginCeremony(): Promise<any> {
  * and subsequently log in the user.
  * @param user The new user's information.
  */
-export async function doRegisterUserCeremony(user: UserCreateModel): Promise<any> {
+export function doRegisterUserCeremony(user: UserCreateModel): Promise<any> {
   // The new user registration ceremony steps are as follows:
   //  1) retrieve attestation options/challenge
   //  2) start the client side credential creation and get authenticator response
@@ -101,7 +101,7 @@ export async function doRegisterUserCeremony(user: UserCreateModel): Promise<any
 /**
  * Attempts to create and register a new WebAuthn passkey for the current user.
  */
-export async function doRegisterPasskeyCeremony(): Promise<any> {
+export function doRegisterPasskeyCeremony(): Promise<any> {
   // The device registration ceremony steps are as follows:
   //  1) retrieve attestation options/challenge
   //  2) start the client side credential creation and get authenticator response
@@ -118,7 +118,6 @@ export async function doRegisterPasskeyCeremony(): Promise<any> {
 /**
  * Logs the current user out.
  */
-export function logout(){
-  axios.post('/api/webauthn/logout');
-  window.location.href = '/login';
+export function logout(): Promise<any> {
+  return axios.post('/api/webauthn/logout');
 }
