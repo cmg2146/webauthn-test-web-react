@@ -1,0 +1,11 @@
+*Dockerfile*
+*.dockerignore*
+*docker-compose*
+.git
+.vscode
+.editorconfig
+*.gitignore
+*.gitattributes
+*.next
+next-env.d.ts
+*node_modules

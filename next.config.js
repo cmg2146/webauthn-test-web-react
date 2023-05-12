@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  //output: process.NODE_ENV === 'development' ? undefined : 'export',
-  //distDir: '.next',
+  output: 'export',
+  distDir: '.next',
   reactStrictMode: true
 }
 
+// TODO: Configure lint on build?
 module.exports = nextConfig
