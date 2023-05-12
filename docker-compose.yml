@@ -2,6 +2,24 @@ version: '3.1'
 
 services:
 
+  # everything goes through the proxy in development. API requests proxy to the API backend
+  # and all other requests proxy to the frontend web service. This allows a single origin to be used
+  # in the browser, facilitating the use of SameSite Strict cookies for authentication. In production,
+  # the setup is the same, except with nginx serving the frontend directly via static file serving.
+  proxy:
+    image: nginx
+    ports:
+      - 10000:443
+    volumes:
+      - ./default.conf.dev.template:/etc/nginx/templates/default.conf.template
+      - ./dev-server.key:/etc/ssl/dev-server.key
+      - ./dev-server.pem:/etc/ssl/dev-server.pem
+    environment:
+      API_URL: http://host.docker.internal:10001
+      WEB_URL: http://web:3000
+    depends_on:
+      - web
+
   web:
     build:
       context: .
@@ -9,8 +27,6 @@ services:
       args:
         - NODE_ENV=development
     command: ["npm", "run", "dev"]
-    ports:
-      - 10000:3000
     volumes:
       - ./src:/app/src
       - ./public:/app/public
@@ -19,9 +35,5 @@ services:
       - ./tailwind.config.js:/app/tailwind.config.js
       - ./tsconfig.json:/app/tsconfig.json
       - ./.eslintrc.json:/app/.eslintrc.json
-      # bind mount the certs to avoid any chance of them ending up in built image
-      - ./dev-server.key:/app/dev-server.key
-      - ./dev-server.pem:/app/dev-server.pem
     environment:
-      API_URL: http://host.docker.internal:10001
       PORT: 3000
