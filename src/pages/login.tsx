@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 
+import LoginLayout from "@/components/layouts/LoginLayout";
 import Spinner from "@/components/Spinner";
 import { doLoginCeremony } from "@/scripts/authHelpers";
 
@@ -24,8 +24,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start md:px-10 xs:px-5 py-5">
-      <Image src="webauthn-logo.svg" width="90" height="90" alt="Logo" className="my-10"></Image>
+    <LoginLayout>
       <div className="card flex flex-col items-center justify-center w-96 max-w-full">
         <h1 className="self-start text-2xl font-bold mb-8">Login</h1>
         <span className="mb-6">Click below to login with your computer, phone, or security key.</span>
@@ -45,6 +44,6 @@ export default function Login() {
           <Link href="/register" className="text-blue-400 text-sm underline">Register here.</Link>
         </span>
       </div>
-    </div>
+    </LoginLayout>
   )
 }

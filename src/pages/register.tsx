@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
 
+import LoginLayout from "@/components/layouts/LoginLayout";
 import Spinner from "@/components/Spinner";
 import { doRegisterUserCeremony } from "@/scripts/authHelpers";
 import UserCreateModel from "@/scripts/models/users/UserCreateModel";
@@ -46,8 +46,7 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start md:px-10 xs:px-5 py-5">
-      <Image src="webauthn-logo.svg" width="90" height="90" alt="Logo" className="my-10"></Image>
+    <LoginLayout>
       <div className="card flex flex-col items-center justify-center xs:w-full sm:2/3 lg:w-1/2 xl:w-1/3 max-w-full">
         <h1 className="self-start text-2xl font-bold mb-8">Register</h1>
         <form className="flex flex-col" onSubmit={handleSubmit(onRegister, onRegisterSubmitInvalid)}>
@@ -117,6 +116,6 @@ export default function Register() {
           </div>
         </form>
       </div>
-    </div>
+    </LoginLayout>
   )
 }
