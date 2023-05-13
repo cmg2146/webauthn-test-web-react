@@ -1,6 +1,6 @@
 import {
   EllipsisHorizontalIcon,
-  ComputerDesktopIcon,
+  KeyIcon,
   DevicePhoneMobileIcon,
   CpuChipIcon,
   TrashIcon
@@ -26,7 +26,7 @@ export default function UserPasskeyItem({
     const attFmt = passkey.attestationFormatId;
 
     if (attFmt === 'tpm') {
-      return <ComputerDesktopIcon className="w-6 h-6" />;
+      return <CpuChipIcon className="w-6 h-6" />;
     } else if (
       attFmt === 'android-key' ||
       attFmt === 'android-safetynet' ||
@@ -35,7 +35,7 @@ export default function UserPasskeyItem({
       return <DevicePhoneMobileIcon className="w-6 h-6" />;
     }
 
-    return <CpuChipIcon className="w-6 h-6" />;
+    return <KeyIcon className="w-6 h-6" />;
   }
 
   return (
