@@ -1,24 +1,33 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
 import LoginLayout from "@/components/layouts/LoginLayout";
 import Spinner from "@/components/Spinner";
-import { doLoginCeremony } from "@/scripts/authHelpers";
+import { doLoginCeremony, useCurrentUser } from "@/scripts/authHelpers";
 
 export default function Login() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const { mutateUser } = useCurrentUser();
+  const router = useRouter();
 
   async function onLogin(event: FormEvent<HTMLFormElement>): Promise<any> {
     event.preventDefault();
     setIsLoggingIn(true);
     setLoginError("");
 
+    const callbackRoute = typeof router.query.callbackRoute === 'string'
+      ? router.query.callbackRoute
+      : '/';
+
     return doLoginCeremony()
+      .then(_ => {
+        mutateUser();
+        return router.push(callbackRoute);
+      })
       .catch((error) => {
         setLoginError(error.message);
-      })
-      .finally(() => {
         setIsLoggingIn(false);
       });
   };

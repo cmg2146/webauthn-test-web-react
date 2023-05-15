@@ -4,8 +4,10 @@ import UserPasskeys from "@/components/UserPasskeys";
 
 export default function Passkeys() {
   return (
-    <Layout>
-      <UserPasskeys className="h-screen flex-grow bg-white overflow-y-auto" />
-    </Layout>
+    <RequireAuth>
+      <Layout>
+        <UserPasskeys className="h-screen flex-grow bg-white overflow-y-auto" />
+      </Layout>
+    </RequireAuth>
   );
 }

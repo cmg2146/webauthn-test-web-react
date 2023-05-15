@@ -11,12 +11,19 @@ export default function NavSidebar({
 }: {
   className?: string
 }) {
-  const { user, isLoading, isError } = useCurrentUser();
+  const { user, mutateUser } = useCurrentUser();
   const router = useRouter();
   const currentRootRoute = router.pathname.split('/')[1];
 
   function getActiveBackgroundClass(route: string): string {
     return currentRootRoute.toLowerCase() === route ? 'bg-slate-200' : '';
+  }
+
+  function onLogout() {
+    logout().then(_ => {
+      mutateUser();
+      router.push('/login');
+    });
   }
 
   // TODO: Implement responsive, collapsible nav and header bar
@@ -51,7 +58,7 @@ export default function NavSidebar({
               as="a"
               href="#"
               className="flex items-center px-3 py-2 hover:bg-gray-100 ui-active:bg-gray-100"
-              onClick={() => logout()}
+              onClick={() => onLogout()}
             >
               <ArrowLeftCircleIcon className="w-6 h-6 mr-2" />
               <span>Logout</span>

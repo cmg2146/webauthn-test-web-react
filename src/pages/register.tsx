@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 import LoginLayout from "@/components/layouts/LoginLayout";
 import Spinner from "@/components/Spinner";
@@ -10,6 +11,7 @@ export default function Register() {
   const { register, handleSubmit, formState: { errors } } = useForm<UserCreateModel>();
   const [isRegistering, setIsRegistering] = useState(false);
   const [registrationError, setRegistrationError] = useState("");
+  const router = useRouter();
 
   const textFieldRules = {
     required: {
@@ -28,10 +30,9 @@ export default function Register() {
     setRegistrationError("");
 
     return doRegisterUserCeremony(data)
+      .then(_ => router.push('/'))
       .catch((error) => {
         setRegistrationError(error.message);
-      })
-      .finally(() => {
         setIsRegistering(false);
       });
   };

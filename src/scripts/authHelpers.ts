@@ -1,30 +1,35 @@
 import axios from "axios";
-import useSWR from "swr";
+import useSWR, { KeyedMutator } from "swr";
 import { startAuthentication, startRegistration } from '@simplewebauthn/browser';
 
 import UserModel from "./models/users/UserModel";
 import UserCredentialModel from "./models/passkeys/UserCredentialModel";
 import UserCreateModel from './models/users/UserCreateModel';
 
-// TODO: Figure out client side auth redirects
-
 /**
  * Uses SWR to get the current user.
  */
 export function useCurrentUser(): {
   user: UserModel | undefined,
+  mutateUser: KeyedMutator<UserModel>
   isLoading: boolean,
   isError: any
 } {
-  const { data, error, isLoading } = useSWR(
+  const { data: user, error: isError, isLoading, mutate: mutateUser } = useSWR(
     '/api/users/me',
-    (url) => axios.get<UserModel>(url).then((res) => res.data));
+    (url) => axios.get<UserModel>(url).then((res) => res.data),
+    {
+      // Important to tevalidate on mount to properly handle redirects without having to explictly call mutate.
+      revalidateOnMount: true,
+      errorRetryCount: 3
+    });
 
   return {
-    user: data,
+    user,
+    mutateUser,
     isLoading,
-    isError: error
-  }
+    isError
+  };
 }
 
 /**
@@ -43,7 +48,7 @@ export function useCurrentPasskey(): {
     passkey: data,
     isLoading,
     isError: error
-  }
+  };
 }
 
 /**
