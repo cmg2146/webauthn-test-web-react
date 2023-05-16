@@ -63,7 +63,7 @@ export default function UserPasskeyItem({
           </Menu.Button>
           <Menu.Items
             as="div"
-            className="menu-items-tr z-10 w-56 py-1 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            className="menu-items-tr z-10 w-40 py-1 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           >
             <Menu.Item
               as="a"

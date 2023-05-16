@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
 import LoginLayout from "@/components/layouts/LoginLayout";
-import Spinner from "@/components/Spinner";
+import Spinner from "@/components/controls/Spinner";
 import { doRegisterUserCeremony } from "@/scripts/authHelpers";
 import UserCreateModel from "@/scripts/models/users/UserCreateModel";
 
@@ -48,7 +48,7 @@ export default function Register() {
 
   return (
     <LoginLayout>
-      <div className="card flex flex-col items-center justify-center xs:w-full sm:2/3 lg:w-1/2 xl:w-1/3 max-w-full">
+      <div className="card flex flex-col items-center justify-center w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
         <h1 className="self-start text-2xl font-bold mb-8">Register</h1>
         <form className="flex flex-col" onSubmit={handleSubmit(onRegister, onRegisterSubmitInvalid)}>
           <label

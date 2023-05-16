@@ -2,7 +2,7 @@ import Router from "next/router";
 import { ReactNode, useEffect } from "react";
 
 import { useCurrentUser } from "@/scripts/authHelpers";
-import Spinner from "./Spinner";
+import Spinner from "./controls/Spinner";
 
 export default function RequireAuth({
   children,

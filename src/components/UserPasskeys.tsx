@@ -5,10 +5,11 @@ import { MouseEvent, useState } from "react";
 
 import UserPasskeyItem from "./UserPasskeyItem";
 import ConfirmDeletePasskeyDialog from "./ConfirmDeletePasskeyDialog";
-import Spinner from "./Spinner";
+import Spinner from "./controls/Spinner";
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
 import { doRegisterPasskeyCeremony } from "@/scripts/authHelpers";
 
+// TODO: consolidate this with passkeys page before componentizing
 export default function UserPasskeys({
   className = ""
 }: {
@@ -40,7 +41,6 @@ export default function UserPasskeys({
   }
 
   function onPasskeyDeleted(passkey: UserCredentialModel) {
-    // TODO: remove the passkey from the data instead of doing a reload, if possible
     setDeletingPasskey(null);
     mutate();
   }
@@ -74,22 +74,19 @@ export default function UserPasskeys({
 
   return (
     <>
-      <div className={`flex flex-col justify-start items-stretch max-w-full divide-y ${className}`}>
-        <div className="flex items-center justify-between py-5 px-10">
-          <h1 className="text-2xl font-semibold">Passkeys</h1>
+      <div className={`flex flex-col justify-start items-stretch divide-y ${className}`}>
+        <div className="flex flex-col divide-y">
+          {passkeyContent}
+        </div>
+        <div className="flex flex-col flex-grow justify-start items-center p-10">
           <button
-            className="btn-primary rounded-full self-end flex items-center font-semibold"
+            className="btn-primary rounded-full flex items-center font-semibold mb-8"
             onClick={addPasskey}
             disabled={isAddingPasskey}
           >
             <PlusIcon className="w-6 h-6 mr-2"></PlusIcon>
-            <span>Passkey</span>
+            <span>New Passkey</span>
           </button>
-        </div>
-        <div className="flex flex-col divide-y">
-          {passkeyContent}
-        </div>
-        <div className="flex flex-grow justify-center items-center p-10">
           <p className="md:max-w-2xl font-light">
             A passkey is a credential stored on one of your devices and is used for logging in. A passkey
             consists of a public/private keypair and the private key never leaves your device.

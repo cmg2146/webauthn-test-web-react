@@ -4,7 +4,8 @@ import { useState } from "react";
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
-import Spinner from "./Spinner";
+import Spinner from "./controls/Spinner";
+import Backdrop from "./controls/Backdrop";
 
 export default function ConfirmDeletePasskeyDialog({
   passkey,
@@ -56,7 +57,7 @@ export default function ConfirmDeletePasskeyDialog({
       className="fixed inset-0 z-10 overflow-y-auto flex min-h-full items-center justify-center p-4 text-center sm:p-0"
       onClose={() => onClose(passkey)}
     >
-      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+      <Backdrop />
       <Dialog.Panel
         className="relative transform overflow-hidden p-6 rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
       >

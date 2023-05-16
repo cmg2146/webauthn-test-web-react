@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
 import LoginLayout from "@/components/layouts/LoginLayout";
-import Spinner from "@/components/Spinner";
+import Spinner from "@/components/controls/Spinner";
 import { doLoginCeremony, useCurrentUser } from "@/scripts/authHelpers";
 
 export default function Login() {
