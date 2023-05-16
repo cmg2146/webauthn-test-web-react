@@ -22,7 +22,10 @@ export default function Layout({
         className={`w-[300px] shrink-0 h-screen max-lg:fixed z-10 ${menuVisible ? 'left-0' : 'max-lg:-left-[300px]'} overflow-y-auto transition-all duration-300`}
       ></NavSidebar>
       <div className="flex flex-col flex-grow overflow-y-auto">
-        <NavHeader title={headerTitle} onShowMenuClick={() => setMenuVisible(true)}></NavHeader>
+        <NavHeader
+          title={headerTitle}
+          onShowMenuClick={() => setMenuVisible(true)}
+        ></NavHeader>
         {children}
       </div>
       <Backdrop
