@@ -5,8 +5,8 @@ import UserPasskeys from "@/components/UserPasskeys";
 export default function Passkeys() {
   return (
     <RequireAuth>
-      <Layout>
-        <UserPasskeys className="h-screen flex-grow bg-white overflow-y-auto" />
+      <Layout headerTitle="Passkeys">
+        <UserPasskeys className="flex-grow bg-white" />
       </Layout>
     </RequireAuth>
   );
