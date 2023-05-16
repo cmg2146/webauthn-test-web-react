@@ -11,7 +11,7 @@ import moment from "moment";
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
 import { useCurrentPasskey } from '@/scripts/authHelpers';
 
-export default function UserPasskeyItem({
+export default function PasskeyItem({
   passkey,
   onDelete,
   className = ""
