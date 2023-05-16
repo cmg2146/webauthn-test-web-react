@@ -6,8 +6,8 @@ import { MouseEvent, useState } from "react";
 
 import Layout from "@/components/layouts/Layout";
 import RequireAuth from "@/components/RequireAuth";
-import PasskeyItem from "@/components/PasskeyItem";
-import ConfirmDeletePasskeyDialog from "@/components/ConfirmDeletePasskeyDialog";
+import PasskeyItem from "@/components/passkeys/PasskeyItem";
+import ConfirmDeletePasskeyDialog from "@/components/passkeys/ConfirmDeletePasskeyDialog";
 import Spinner from "@/components/controls/Spinner";
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
 import { doRegisterPasskeyCeremony } from "@/scripts/authHelpers";

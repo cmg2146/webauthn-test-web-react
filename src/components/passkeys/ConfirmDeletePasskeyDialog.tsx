@@ -4,8 +4,8 @@ import { useState } from "react";
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
-import Spinner from "./controls/Spinner";
-import Backdrop from "./controls/Backdrop";
+import Spinner from "../controls/Spinner";
+import Backdrop from "../controls/Backdrop";
 
 export default function ConfirmDeletePasskeyDialog({
   passkey,
