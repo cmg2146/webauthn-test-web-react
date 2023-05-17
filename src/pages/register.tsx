@@ -60,9 +60,11 @@ export default function Register() {
             <FormTextInput name="lastName" label="Last Name" registerOptions={textFieldRules} className="mb-4"></FormTextInput>
 
             <p className="mb-4 mt-8 font-light text-sm">
-              When clicking "Continue" below, you will be prompted to create a credential on a device of your choice.
+            {
+              `When clicking "Continue" below, you will be prompted to create a credential on a device of your choice.
               You can select your current device or an external device like a phone,
-              if you're using your computer, or security key.
+              if you're using your computer, or security key.`
+            }
             </p>
 
             <div className="flex flex-col items-center">

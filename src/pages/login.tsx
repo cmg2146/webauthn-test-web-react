@@ -51,7 +51,7 @@ export default function Login() {
           {loginError && <span className="mt-4 text-red-500 text-sm">{loginError}</span>}
         </form>
         <span>
-          <span className="font-light text-sm">Don't have an account? </span>
+          <span className="font-light text-sm">{`Don't have an account? `}</span>
           <Link href="/register" className="text-blue-400 text-sm underline">Register here.</Link>
         </span>
       </div>

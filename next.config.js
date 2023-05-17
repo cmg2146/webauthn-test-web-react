@@ -13,5 +13,4 @@ const nextConfig = {
   },
 }
 
-// TODO: Configure lint on build?
 module.exports = nextConfig

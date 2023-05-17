@@ -53,7 +53,7 @@ export default function Passkeys() {
     );
   } else if (!passkeys?.length) {
     passkeyContent = (
-      <span className="self-center font-semibold py-5 px-10">You don't have any passkeys registered yet.</span>
+      <span className="self-center font-semibold py-5 px-10">{`You don't have any passkeys registered yet.`}</span>
     );
   } else {
     passkeyContent = passkeys.map((passkey) => (
