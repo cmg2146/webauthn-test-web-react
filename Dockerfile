@@ -29,12 +29,12 @@ COPY ./next.config.js ./next.config.js
 COPY ./postcss.config.js ./postcss.config.js
 COPY ./tailwind.config.js ./tailwind.config.js
 COPY ./tsconfig.json ./tsconfig.json
-COPY ./.eslintrc.js ./.eslintrc.js
+COPY ./.eslintrc.json ./.eslintrc.json
 
 RUN ["npm", "run", "build"]
 
 
 FROM nginx
-COPY --from=generate /app/.next /usr/share/nginx/html
+COPY --from=generate /app/out /usr/share/nginx/html
 # default config was modified for the api reverse proxy
 COPY ./default.conf.template /etc/nginx/templates/default.conf.template
