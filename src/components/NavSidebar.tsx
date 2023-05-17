@@ -17,7 +17,7 @@ export default function NavSidebar({
 
   return (
     <nav className={`flex flex-col bg-slate-50 border-r border-slate-200 text-gray-800 ${className}`}>
-      <Image src="webauthn-logo.svg" width="45" height="45" alt="Logo" className="mt-6 ml-6 mb-8"></Image>
+      <Image src="/webauthn-logo.svg" width="45" height="45" alt="Logo" className="mt-6 ml-6 mb-8"></Image>
       <div className="flex-grow space-y-1 font-semibold px-5">
         <Link
           href="/passkeys"
