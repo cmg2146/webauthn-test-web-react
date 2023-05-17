@@ -6,6 +6,7 @@ server {
     add_header Strict-Transport-Security  'max-age=15552000; includeSubDomains';
     add_header Referrer-Policy            'no-referrer';
     add_header X-Content-Type-Options     'nosniff';
+    # TODO: add more robust CSP
     add_header Content-Security-Policy    "frame-ancestors 'none'; frame-src 'none'";
     add_header X-Frame-Options            'DENY';
 
