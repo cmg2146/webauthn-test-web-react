@@ -1,38 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WebAuthn Test Web (React)
+This repo contains the frontend for the WebAuthn-Test application. This is another implementation of
+[webauthn-test-web](https://github.com/cmg2146/webauthn-test-api), but with React/Next.js instead of
+Vue/Nuxt.js. Consult the [webauthn-test-web](https://github.com/cmg2146/webauthn-test-api) repo for
+more details.
 
-## Getting Started
+This frontend was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
+and builds as a static export for production.
 
-First, run the development server:
+## Build
+For development, make sure to clone the [webauthn-test-api](https://github.com/cmg2146/webauthn-test-api) repo and then
+start the API (consult the repo Readme to learn how to start it). The frontend and API can be started in any order.
+The frontend can be run using Docker Linux containers by executing the following command at the repo root:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+```docker-compose up```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+...and then opening your browser to https://localhost:10000.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+If your browser warns the site is unsafe, trust the development certificate on your machine to avoid the warning again.
+The app requires HTTPS, even in development, because it is a requirement for WebAuthn.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+In production, an Azure DevOps pipeline (azure-pipelines.yml) automatically runs when changes are made to the main branch.
+The pipeline requires the following variables to be configured to properly deploy the updated code:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+* AZURE_SERVICE_CONNECTION
+  * The name of the service connection to Azure. A service connection must be created in Azure DevOps
+  for the pipeline to communicate with Azure.
+* CONTAINER_REGISTRY_SERVICE_CONNECTION
+  * The name of the service connection to the Azure Container Registry (ACR). Docker images are pushed to this ACR.
+  A service connection must be created in Azure DevOps for the pipeline to communicate with the ACR.
+* CONTAINER_REGISTRY_NAMESPACE
+  * The host name of the container registry, for example "{your acr name}.azurecr.io"
+* CONTAINER_IMAGE_REPOSITORY
+  * The name of the Docker image, for example "webauthn-test/web"
+* APP_NAME
+  * The name of the Azure App Service that hosts the web frontend.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Currently, the variables above are set in a variable group in Azure DevOps.
 
-## Learn More
+### Configuration
+The following build-time environment variables must be configured for proper operation:
 
-To learn more about Next.js, take a look at the following resources:
+* NODE_ENV
+  * "development" or "production"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The following run-time environment variables must be configured for proper operation:
+* API_URL
+  * The URL to the API, i.e. http://localhost:10001. This is only needed by the reverse
+  proxy.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+For development, all environment variables have already been set in the docker compose file and can
+be tweaked as needed. Some other environment variables, not listed above, are required for development and
+have also been set in the docker-compose file.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+In production, the variables are set in a variable group in Azure DevOps.
