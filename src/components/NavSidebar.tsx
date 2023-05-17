@@ -9,10 +9,10 @@ export default function NavSidebar({
   className?: string
 }) {
   const router = useRouter();
-  const currentRootRoute = router.pathname.split('/')[1];
+  const currentRoute = router.pathname.toLowerCase();
 
   function getActiveBackgroundClass(route: string): string {
-    return currentRootRoute.toLowerCase() === route ? 'bg-slate-200' : '';
+    return currentRoute.startsWith(route) ? 'bg-slate-200' : '';
   }
 
   return (
@@ -21,7 +21,7 @@ export default function NavSidebar({
       <div className="flex-grow space-y-1 font-semibold px-5">
         <Link
           href="/passkeys"
-          className={`flex items-center p-3 rounded hover:bg-slate-200 no-underline ${getActiveBackgroundClass('passkeys')}`}
+          className={`flex items-center p-3 rounded hover:bg-slate-200 no-underline ${getActiveBackgroundClass('/passkeys')}`}
         >
           <FingerPrintIcon className="h-6 w-6 mr-3" />
           <span className="font-semibold">Passkeys</span>
