@@ -1,4 +1,5 @@
 
+import Head from "next/head";
 import { PlusIcon } from '@heroicons/react/24/outline'
 import { MouseEvent, useState } from "react";
 
@@ -68,6 +69,7 @@ export default function Passkeys() {
   return (
     <RequireAuth>
       <Layout headerTitle="Passkeys">
+        <Head><title>Passkeys</title></Head>
         <div className="flex-grow flex flex-col justify-start items-stretch divide-y bg-white">
           <div className="flex flex-col divide-y">
             {passkeyContent}

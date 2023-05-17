@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import LoginLayout from "@/components/layouts/LoginLayout";
 import Spinner from "@/components/controls/Spinner";
@@ -49,6 +50,7 @@ export default function Register() {
 
   return (
     <LoginLayout>
+      <Head><title>WebAuthn Demo - Register</title></Head>
       <div className="card flex flex-col items-center justify-center w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
         <h1 className="self-start text-2xl font-bold mb-8">Register</h1>
         <FormProvider {...methods}>

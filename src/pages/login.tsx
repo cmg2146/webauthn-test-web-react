@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { FormEvent, useState } from "react";
 
 import LoginLayout from "@/components/layouts/LoginLayout";
@@ -34,6 +35,7 @@ export default function Login() {
 
   return (
     <LoginLayout>
+      <Head><title>WebAuthn Demo - Login</title></Head>
       <div className="card flex flex-col items-center justify-center w-96 max-w-full">
         <h1 className="self-start text-2xl font-bold mb-8">Login</h1>
         <span className="mb-6">Click below to login with your computer, phone, or security key.</span>
