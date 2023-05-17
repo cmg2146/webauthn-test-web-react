@@ -58,9 +58,7 @@ export default function ConfirmDeletePasskeyDialog({
       onClose={() => onClose(passkey)}
     >
       <Backdrop />
-      <Dialog.Panel
-        className="relative transform overflow-hidden p-6 rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
-      >
+      <Dialog.Panel className="relative transform overflow-hidden p-6 rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
         <div className="flex items-start mb-5">
           <div className="rounded-full p-2 mr-5 bg-red-200">
             <ExclamationTriangleIcon className="w-6 h-6 text-red-500" />
@@ -75,20 +73,12 @@ export default function ConfirmDeletePasskeyDialog({
               <p className="text-red-600">There was an issue deleting the passkey: {errorDeletingPasskey}</p>
             }
           </div>
-
         </div>
         <div className="flex items-center justify-end">
-          <button
-            className="btn-plain"
-            onClick={() => onCancel(passkey)}
-          >
+          <button className="btn-plain" onClick={() => onCancel(passkey)}>
             Cancel
           </button>
-          <button
-            className="btn-danger ml-3"
-            disabled={isDeletingPasskey}
-            onClick={() => confirmedDeletion()}
-          >
+          <button className="btn-danger ml-3" disabled={isDeletingPasskey} onClick={() => confirmedDeletion()}>
             {isDeletingPasskey && <Spinner className="mr-2 h-4 w-4"></Spinner>}
             Delete
           </button>
