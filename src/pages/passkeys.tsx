@@ -1,22 +1,17 @@
 
-import useSWR from "swr";
-import axios from "axios";
 import { PlusIcon } from '@heroicons/react/24/outline'
 import { MouseEvent, useState } from "react";
 
 import Layout from "@/components/layouts/Layout";
 import RequireAuth from "@/components/RequireAuth";
+import Spinner from "@/components/controls/Spinner";
 import PasskeyItem from "@/components/passkeys/PasskeyItem";
 import ConfirmDeletePasskeyDialog from "@/components/passkeys/ConfirmDeletePasskeyDialog";
-import Spinner from "@/components/controls/Spinner";
 import UserCredentialModel from "@/scripts/models/passkeys/UserCredentialModel";
-import { doRegisterPasskeyCeremony } from "@/scripts/authHelpers";
+import { doRegisterPasskeyCeremony, usePasskeys } from "@/scripts/authHelpers";
 
 export default function Passkeys() {
-  const {data, error, isLoading, mutate} = useSWR(
-    "/api/users/me/credentials",
-    (url) => axios.get<UserCredentialModel[]>(url).then((res) => res.data));
-
+  const { passkeys, isError, isLoading, mutate } = usePasskeys();
   const [isAddingPasskey, setIsAddingPasskey] = useState(false);
   const [errorAddingPasskey, setErrorAddingPasskey] = useState("");
   const [deletingPasskey, setDeletingPasskey] = useState<UserCredentialModel | undefined | null>(null);
@@ -51,16 +46,16 @@ export default function Passkeys() {
         Loading your passkeys...
       </span>
     );
-  } else if (error) {
+  } else if (isError) {
     passkeyContent = (
       <span className="self-center font-semibold py-5 px-10">There was an issue loading your passkeys.</span>
     );
-  } else if (!data?.length) {
+  } else if (!passkeys?.length) {
     passkeyContent = (
       <span className="self-center font-semibold py-5 px-10">You don't have any passkeys registered yet.</span>
     );
   } else {
-    passkeyContent = data.map((passkey) => (
+    passkeyContent = passkeys.map((passkey) => (
       <PasskeyItem
         key={passkey.id.toString()}
         passkey={passkey}

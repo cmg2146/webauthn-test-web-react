@@ -52,6 +52,27 @@ export function useCurrentPasskey(): {
 }
 
 /**
+ * Uses SWR to get all WebAuthn passkeys for the current user.
+ */
+export function usePasskeys(): {
+  passkeys: UserCredentialModel[] | undefined,
+  mutate: KeyedMutator<UserCredentialModel[]>
+  isLoading: boolean,
+  isError: any
+} {
+  const {data, error, isLoading, mutate} = useSWR(
+    "/api/users/me/credentials",
+    (url) => axios.get<UserCredentialModel[]>(url).then((res) => res.data));
+
+  return {
+    passkeys: data,
+    mutate,
+    isLoading,
+    isError: error
+  };
+}
+
+/**
  * Attempts to login a user.
  */
 export function doLoginCeremony(): Promise<any> {
